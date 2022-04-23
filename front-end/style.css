@@ -1,0 +1,148 @@
+body {
+  background-color: rgba(3, 29, 59, 0.5);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+  
+#header {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: white;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+#home {
+  border-radius: 4px;
+  background: rgba(148, 155, 255);
+}
+
+#locHeader {
+  margin: 0;
+}
+
+#dataNav {
+  border-radius: 4px;
+  background: rgba(148, 155, 255);
+  margin-right: 30px
+}
+  
+#body {
+  height: 200px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 55px;
+}
+
+#alerts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#alertContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+#alertImg {
+  height: 93px;
+  width: 102px;
+}
+
+#currentAlerts {
+  margin: 1px;
+  padding: 1px;
+}
+
+#current {
+  display: none
+}
+
+#minutely {
+  display: none
+}
+
+#hourly {
+  display: none
+}
+
+#daily {
+  display: none
+}
+
+.currentData {
+  margin: 1px;
+  padding: 1px;
+  white-space: pre;
+}
+
+.minutelyData {
+  margin: 1px;
+  padding: 1px;
+  white-space: pre;
+}
+
+.hourlyData {
+  margin: 1px;
+  padding: 1px;
+  white-space: pre;
+}
+
+.dailyData {
+  margin: 1px;
+  padding: 1px;
+  white-space: pre;
+}
+
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#dropdownContent {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropContent {
+  border-radius: 4px;
+  background: rgba(148, 155, 255);
+  min-width: 175px;
+}
+
+#locSelection {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#locSelBox {
+  background-color: rgb(255, 255, 255);
+  height: 30%;
+  width: 80%;
+  margin: auto;
+}
+
+
+

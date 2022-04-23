@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>weather thing</title>
+    <link rel="stylesheet" href = "style.css">
+  </head>
+  <body>
+
+    <div id = "header">
+      <button id = "home">
+        Home
+      </button>
+    </div>
+    
+    <div id = "body">
+      <button id = "submit" onclick = "getLocationData()">
+        click to get location data
+      </button>
+      <br></br>
+
+      <input type = "text" id = "city" name = "city" autocomplete = off></input>
+
+    </div>
+
+    <div id = "locSelection">
+      <div id = "locSelBox"></div>
+    </div>
+  
+
+    <script src = "script.js" type = "text/javascript">
+      getLocationData()
+    </script>
+    
+    <noscript>
+      "Browser doesn't support JavaScript. Sorry"
+    </noscript>
+  </body>
+</html>

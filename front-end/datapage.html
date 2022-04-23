@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <meta name = "datapage" content = "width=device-width">
+    <title>output</title>
+    <link rel="stylesheet" href = "style.css">
+  </head>
+  <body onload = "getWeatherData()">
+
+    <div id = "header">
+      <button id = "home" onclick = "document.location = 'homepage.html'; localStorage.setItem('dataFetched', 'false')">Home</button>
+
+      <p id = "locHeader"></p>
+
+      <div id = "dropdown">
+        <button id = "dataNav" onclick = "dropdown()">
+          &#9776 Currently Viewing: Current
+        </button>
+        <div id = "dropdownContent">
+          <button id = "currentButton" class = "dropContent" onclick = "dataToggle()">Current</button>
+          <button id = "minutelyButton" class = "dropContent" onclick = "dataToggle()">Minute-by-Minute</button>
+          <button id = "hourlyButton" class = "dropContent" onclick = "dataToggle()">Hourly</button>
+          <button id = "dailyButton" class = "dropContent" onclick = "dataToggle()">Daily</button>
+        </div>
+      </div>
+    </div>
+
+		<div id = "body">
+      <div id = "outputDiv">
+
+        <p id = "output"></p>
+
+      </div>
+      <div id = "alerts"></div>
+      <div id = "current">
+        
+        <p id = "temperature" class = "currentData"></p>
+        <p id = "feels_like" class = "currentData"></p>
+        <p id = "humidity" class = "currentData"></p>
+        <p id = "dew_point" class = "currentData"></p>
+        <p id = "wind_speed" class = "currentData"></p>
+        <p id = "condition" class = "currentData"></p>
+        <p id = "description" class = "currentData"></p>
+        <img id = "conditionImg">
+
+      </div>
+      <div id = "minutely"></div>
+      <div id = "hourly"></div>
+      <div id = "daily"></div>
+		</div>
+    
+    <script src = "script.js" type = "text/javascript">
+      getWeatherData()
+      getLocationData()
+			parseWeatherData()
+      dropdown()
+      dataToggle()
+    </script>
+        
+    <noscript>
+      "Browser doesn't support JavaScript. Sorry"
+    </noscript>
+  </body>
+</html>
