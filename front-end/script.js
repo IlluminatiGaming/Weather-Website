@@ -16,7 +16,6 @@ function getSecretKey() {
 function getLocationData() {
   const HTTP = new XMLHttpRequest()
   const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${document.getElementById("city").value}&limit=10&appid=${getSecretKey().res}`
-  console.log(URL)
   
   HTTP.open("GET", URL, false)
   HTTP.send()
