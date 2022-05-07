@@ -208,8 +208,8 @@ function parseWeatherData(data) {
       isNewDay = true
     }
     if (x == 0 || isNewDay) {
-      const date = new Date(JSONdata.hourly[x].dt * 1000).toString()
-      date1.innerHTML = date.slice(0, 10)
+      const date = new Date(JSONdata.hourly[x].dt * 1000)
+      date1.innerHTML = dateConverter(date.getDay(), date.getMonth(), date.getDate())
     }
     temperature.innerHTML = "Temperature: " + JSONdata.hourly[x].temp + "°F"
     feels_like.innerHTML = "Feels Like: " + JSONdata.hourly[x].feels_like + "°F"
@@ -355,6 +355,13 @@ function timeConverter(time) {
   } else {
     return `${time}:00 am`
   }
+}
+
+function dateConverter(day, month, date) {
+  const monthList = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+  return `${dayList[day]} ${monthList[month]} ${date}`
 }
 
 function dropdown() {
