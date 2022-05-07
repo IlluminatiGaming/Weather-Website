@@ -175,7 +175,9 @@ function parseWeatherData(data) {
 
   for (const x in JSONdata.hourly) {
     const hourly = document.getElementById("hourly")
+    const date1 = document.createElement("h3")
     const hourlyData = document.createElement("div")
+    const hourlyTime = document.createElement("p")
     const temperature = document.createElement("p")
     const feels_like = document.createElement("p")
     const humidity = document.createElement("p")
@@ -186,8 +188,12 @@ function parseWeatherData(data) {
     const precipAccumulation = document.createElement("p")
     const conditionImg = document.createElement("img")
 
+    isNewDay = false
+
     hourlyData.id = "hourly" + x
 
+    date1.className = "dateTitle"
+    hourlyTime.className = "hourlyData"
     temperature.className = "hourlyData"
     feels_like.className = "hourlyData"
     humidity.className = "hourlyData"
@@ -197,6 +203,14 @@ function parseWeatherData(data) {
     description.className = "hourlyData"
     precipAccumulation.className = "hourlyData"
 
+    hourlyTime.innerHTML = timeConverter(new Date(JSONdata.hourly[x].dt * 1000).getHours())
+    if (hourlyTime.innerHTML == '12:00 am') {
+      isNewDay = true
+    }
+    if (x == 0 || isNewDay) {
+      const date = new Date(JSONdata.hourly[x].dt * 1000).toString()
+      date1.innerHTML = date.slice(0, 10)
+    }
     temperature.innerHTML = "Temperature: " + JSONdata.hourly[x].temp + "°F"
     feels_like.innerHTML = "Feels Like: " + JSONdata.hourly[x].feels_like + "°F"
     humidity.innerHTML = "Humidity: " + JSONdata.hourly[x].humidity
@@ -211,6 +225,15 @@ function parseWeatherData(data) {
 
     conditionImg.src = imagePath(JSONdata.hourly[x].weather[0].id, JSONdata.hourly[x].weather[0].icon)
 
+    hourlyTime.style.fontWeight = 700
+
+    if (x == 0) {
+      hourly.insertBefore(date1, hourly.children[0])
+    }
+    if (isNewDay) {
+      hourly.insertBefore(date1, hourly.children[x+1])
+    }
+    hourlyData.appendChild(hourlyTime)
     hourlyData.appendChild(temperature)
     hourlyData.appendChild(feels_like)
     hourlyData.appendChild(humidity)
@@ -319,6 +342,18 @@ function imagePath(id, icon) {
     return "icons/cloudy.png"
   } else {
     return "icons/redAlert.png"
+  }
+}
+
+function timeConverter(time) {
+  if (time > 12) {
+    return `${time - 12}:00 pm`
+  } else if (time == 12) {
+    return `12:00 pm`
+  } else if (time == 00) {
+    return `12:00 am`
+  } else {
+    return `${time}:00 am`
   }
 }
 

@@ -109,6 +109,11 @@ body::-webkit-scrollbar {
   white-space: pre;
 }
 
+.dateTitle {
+  margin: 3px 1px 3px 1px;
+  padding: 3px 1px 3px 1px;
+}
+
 #dropdown {
   position: relative;
   display: inline-block;
