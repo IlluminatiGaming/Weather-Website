@@ -253,6 +253,7 @@ function parseWeatherData(data) {
 
   for (const x in JSONdata.daily) {
     const daily = document.getElementById("daily")
+    const date1 = document.createElement("h3")
     const dailyData = document.createElement("div")
     const maxTemp = document.createElement("p")
     const minTemp = document.createElement("p")
@@ -267,6 +268,7 @@ function parseWeatherData(data) {
 
     dailyData.id = "daily" + x
 
+    date1.className = "dateTitle"
     maxTemp.className = "dailyData"
     minTemp.className = "dailyData"
     humidity.className = "dailyData"
@@ -277,6 +279,8 @@ function parseWeatherData(data) {
     precipChance.className = "dailyData"
     precipAccumulation.className = "dailyData"
 
+    const date = new Date(JSONdata.daily[x].dt * 1000)
+    date1.innerHTML = dateConverter(date.getDay(), date.getMonth(), date.getDate())
     maxTemp.innerHTML = "High Temperature: " + JSONdata.daily[x].temp.max + "°F"
     minTemp.innerHTML = "Low Temperature: " + JSONdata.daily[x].temp.min + "°F"
     humidity.innerHTML = "Humidity: " + JSONdata.daily[x].humidity
@@ -292,6 +296,7 @@ function parseWeatherData(data) {
 
     conditionImg.src = imagePath(JSONdata.daily[x].weather[0].id, JSONdata.daily[x].weather[0].icon)
 
+    dailyData.appendChild(date1)
     dailyData.appendChild(maxTemp)
     dailyData.appendChild(minTemp)
     dailyData.appendChild(humidity)
